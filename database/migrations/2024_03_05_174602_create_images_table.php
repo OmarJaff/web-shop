@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Product::class);
             $table->string('path');
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }
