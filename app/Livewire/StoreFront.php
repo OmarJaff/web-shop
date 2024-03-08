@@ -11,7 +11,10 @@ class StoreFront extends Component
     #[computed]
     public function products ()
     {
-        return Product::query()->get();
+
+       return Product::query()->get();
+
+
     }
 
     public function render()
