@@ -32,21 +32,14 @@
                             <fieldset class="mt-2">
                                 <legend class="sr-only">Choose a color</legend>
                                 <div class="flex items-center space-x-3">
-
+                                    @foreach($this->product->variants as $variant)
                                     <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
                                         <input type="radio" name="color-choice" value="Black" class="sr-only" aria-labelledby="color-choice-0-label">
-                                        <span id="color-choice-0-label" class="sr-only">Black</span>
-                                        <span aria-hidden="true" class="h-8 w-8 bg-gray-900 rounded-full border border-black border-opacity-10"></span>
+                                        <span id="color-choice-0-label" class="sr-only">{{$variant->color}}</span>
+                                        <span aria-hidden="true" class="h-8 w-8 bg-{{strtolower($variant->color)}}-800 rounded-full border border-{{strtolower($variant->color)}} border-opacity-10"></span>
                                     </label>
-                                    <!--
-                                      Active and Checked: "ring ring-offset-1"
-                                      Not Active and Checked: "ring-2"
-                                    -->
-                                    <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-400">
-                                        <input type="radio" name="color-choice" value="Heather Grey" class="sr-only" aria-labelledby="color-choice-1-label">
-                                        <span id="color-choice-1-label" class="sr-only">Heather Grey</span>
-                                        <span aria-hidden="true" class="h-8 w-8 bg-gray-400 rounded-full border border-black border-opacity-10"></span>
-                                    </label>
+                                    @endforeach
+
                                 </div>
                             </fieldset>
                         </div>
@@ -55,66 +48,19 @@
                         <div class="mt-8">
                             <div class="flex items-center justify-between">
                                 <h2 class="text-sm font-medium text-gray-900">Size</h2>
-                                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">See sizing chart</a>
-                            </div>
+                             </div>
 
                             <fieldset class="mt-2">
                                 <legend class="sr-only">Choose a size</legend>
                                 <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                                    <!--
-                                      In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-                                      Active: "ring-2 ring-indigo-500 ring-offset-2"
-                                      Checked: "border-transparent bg-indigo-600 text-white hover:bg-indigo-700", Not Checked: "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
-                                    -->
+                                    @foreach($this->product->variants as $variant)
                                     <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
                                         <input type="radio" name="size-choice" value="XXS" class="sr-only" aria-labelledby="size-choice-0-label">
-                                        <span id="size-choice-0-label">XXS</span>
+                                        <span id="size-choice-0-label">{{$variant->size}}</span>
                                     </label>
-                                    <!--
-                                      In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-                                      Active: "ring-2 ring-indigo-500 ring-offset-2"
-                                      Checked: "border-transparent bg-indigo-600 text-white hover:bg-indigo-700", Not Checked: "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
-                                    -->
-                                    <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-                                        <input type="radio" name="size-choice" value="XS" class="sr-only" aria-labelledby="size-choice-1-label">
-                                        <span id="size-choice-1-label">XS</span>
-                                    </label>
-                                    <!--
-                                      In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-                                      Active: "ring-2 ring-indigo-500 ring-offset-2"
-                                      Checked: "border-transparent bg-indigo-600 text-white hover:bg-indigo-700", Not Checked: "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
-                                    -->
-                                    <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-                                        <input type="radio" name="size-choice" value="S" class="sr-only" aria-labelledby="size-choice-2-label">
-                                        <span id="size-choice-2-label">S</span>
-                                    </label>
-                                    <!--
-                                      In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-                                      Active: "ring-2 ring-indigo-500 ring-offset-2"
-                                      Checked: "border-transparent bg-indigo-600 text-white hover:bg-indigo-700", Not Checked: "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
-                                    -->
-                                    <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-                                        <input type="radio" name="size-choice" value="M" class="sr-only" aria-labelledby="size-choice-3-label">
-                                        <span id="size-choice-3-label">M</span>
-                                    </label>
-                                    <!--
-                                      In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-                                      Active: "ring-2 ring-indigo-500 ring-offset-2"
-                                      Checked: "border-transparent bg-indigo-600 text-white hover:bg-indigo-700", Not Checked: "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
-                                    -->
-                                    <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-                                        <input type="radio" name="size-choice" value="L" class="sr-only" aria-labelledby="size-choice-4-label">
-                                        <span id="size-choice-4-label">L</span>
-                                    </label>
-                                    <!--
-                                      In Stock: "cursor-pointer", Out of Stock: "opacity-25 cursor-not-allowed"
-                                      Active: "ring-2 ring-indigo-500 ring-offset-2"
-                                      Checked: "border-transparent bg-indigo-600 text-white hover:bg-indigo-700", Not Checked: "border-gray-200 bg-white text-gray-900 hover:bg-gray-50"
-                                    -->
-                                    <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-not-allowed opacity-25">
-                                        <input type="radio" name="size-choice" value="XL" disabled class="sr-only" aria-labelledby="size-choice-5-label">
-                                        <span id="size-choice-5-label">XL</span>
-                                    </label>
+                                    @endforeach
+
+
                                 </div>
                             </fieldset>
                         </div>
@@ -127,23 +73,10 @@
                         <h2 class="text-sm font-medium text-gray-900">Description</h2>
 
                         <div class="prose prose-sm mt-4 text-gray-500">
-                            <p>The Basic tee is an honest new take on a classic. The tee uses super soft, pre-shrunk cotton for true comfort and a dependable fit. They are hand cut and sewn locally, with a special dye technique that gives each tee it's own look.</p>
-                            <p>Looking to stock your closet? The Basic tee also comes in a 3-pack or 5-pack at a bundle discount.</p>
+                             <p>{{$this->product->description}}</p>
                         </div>
                     </div>
 
-                    <div class="mt-8 border-t border-gray-200 pt-8">
-                        <h2 class="text-sm font-medium text-gray-900">Fabric &amp; Care</h2>
-
-                        <div class="prose prose-sm mt-4 text-gray-500">
-                            <ul role="list">
-                                <li>Only the best materials</li>
-                                <li>Ethically and locally made</li>
-                                <li>Pre-washed and pre-shrunk</li>
-                                <li>Machine wash cold with similar colors</li>
-                            </ul>
-                        </div>
-                    </div>
 
                     <!-- Policies -->
                     <section aria-labelledby="policies-heading" class="mt-10">
