@@ -1,3 +1,5 @@
 <div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
+      @foreach($this->products as $product )
+          <h1>{{$product->name}}</h1>
+      @endforeach
 </div>
