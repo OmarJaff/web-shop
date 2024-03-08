@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', \App\Livewire\StoreFront::class);
+Route::get('/', \App\Livewire\StoreFront::class)->name('home');
 
 //Route::middleware([
 //    'auth:sanctum',
