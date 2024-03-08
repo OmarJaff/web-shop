@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Livewire\Attribute;
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Money\Currency;
 use Money\Money;
 
@@ -14,14 +15,16 @@ class Product extends Model
 {
     use HasFactory;
 
+
+
     public function variants (): HasMany
     {
        return $this->hasMany(ProductVariant::class);
     }
 
-    protected function price(): \Illuminate\Database\Eloquent\Casts\Attribute
+    protected function price(): Attribute
     {
-       return \Illuminate\Database\Eloquent\Casts\Attribute::make(
+       return Attribute::make(
            get: function (int $value) {
                return new Money($value, new Currency('USD'));
            }
