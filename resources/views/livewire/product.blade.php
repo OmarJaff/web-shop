@@ -15,10 +15,15 @@
                 <div class="mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0">
                     <h2 class="sr-only">Images</h2>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
-                        @foreach($this->product->images as $image)
-                        <img src="{{$image->path}}" alt="Back of women&#039;s Basic Tee in black." class="@if ($loop->first)lg:col-span-2 lg:row-span-2 @else hidden lg:block  @endif rounded-lg">
+                    <div x-data="{image: '{{$this->product->image->path}}' }" class="grid grid-cols-1   lg:grid-rows-3 lg:gap-8">
+
+                        <img :src="image" alt="Back of women&#039;s Basic Tee in black." class="lg:col-span-2 lg:row-span-2 rounded-lg">
+
+                        <div class="grid grid-cols-3 gap-x-6 mt-6">
+                       @foreach($this->product->images as $image)
+                        <img @click="image = '{{$image->path}}'" src="{{$image->path}}" alt="Back of women&#039;s Basic Tee in black." class="flex w-80  rounded-lg">
                         @endforeach
+                        </div>
 
                     </div>
                 </div>
