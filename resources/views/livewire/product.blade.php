@@ -30,46 +30,25 @@
 
                 <div class="mt-8 lg:col-span-5">
                     <form>
-                        <!-- Color picker -->
-                        <div>
-                            <h2 class="text-sm font-medium text-gray-900">Color</h2>
 
-                            <fieldset class="mt-2">
-                                <legend class="sr-only">Choose a color</legend>
-                                <div class="flex items-center space-x-3">
-                                    @foreach($this->product->variants as $variant)
-                                    <label class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none ring-gray-900">
-                                        <input type="radio" name="color-choice" value="Black" class="sr-only" aria-labelledby="color-choice-0-label">
-                                        <span id="color-choice-0-label" class="sr-only">{{$variant->color}}</span>
-                                        <span aria-hidden="true" class="h-8 w-8 bg-{{strtolower($variant->color)}}-800 rounded-full border border-{{strtolower($variant->color)}} border-opacity-10"></span>
-                                    </label>
-                                    @endforeach
-
-                                </div>
-                            </fieldset>
-                        </div>
 
                         <!-- Size picker -->
                         <div class="mt-8">
                             <div class="flex items-center justify-between">
-                                <h2 class="text-sm font-medium text-gray-900">Size</h2>
+                                <h2 class="text-sm font-medium text-gray-900">Size and Color</h2>
                              </div>
 
-                            <fieldset class="mt-2">
-                                <legend class="sr-only">Choose a size</legend>
-                                <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                                    @foreach($this->product->variants as $variant)
-                                    <label class="flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1 cursor-pointer focus:outline-none">
-                                        <input type="radio" name="size-choice" value="XXS" class="sr-only" aria-labelledby="size-choice-0-label">
-                                        <span id="size-choice-0-label">{{$variant->size}}</span>
-                                    </label>
-                                    @endforeach
+                            <select wire:model="variant"  class="block w-full rounded-md border-1 py-1.5 pl-3 pr-10 text-gray-800">
+                                @foreach($this->product->variants as $variant)
+                                    <option value="{{$variant->id}}" >{{$variant->size}}/{{$variant->color}}</option>
+                                @endforeach
+                            </select>
 
-
-                                </div>
-                            </fieldset>
+                            @error('$variant')
+                                <div class="mt-2 text-red-600"> {{$message}} </div>
+                            @enderror
                         </div>
-                        <x-button class="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3
+                        <x-button wire:click="addToCart" class="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3
                                   text-base font-medium text-white hover:bg-indigo-700
                                   focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to cart</x-button>
 
